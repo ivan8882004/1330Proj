@@ -11,10 +11,10 @@ print("""This is the final test of CAES1234 course
 You have to guess a five letter hidden word for 3 times
 Each time,you have six chances to guess this word
 For the guide shown 
-"G" Indicates that the letter at that position was guessed correctly 
-"Y" indicates that the letter at that position is in the hidden word, but in a different position 
-"X" indicates that the letter at that position is wrong, and isn't in the hidden word   
-If you can guess it correctly within 6 attempts for 3 times.You get an A in this course.For 2 times,You get a B.for 1 time, you get a D.Otherwise,you fail this course.""")
+"G" Indicates that the letter is in the word and in the correct spot 
+"Y" indicates that the letter is in the word but not in the correct spot 
+"X" indicates that the letter is not in the word in any spot   
+If you can guess it correctly within 6 attempts for 3 times.You get an A in this course.For 2 times,You get a B.For 1 time, you get a D.Otherwise,you fail this course.""")
 
 count = 0
 for i in range(0,3):
