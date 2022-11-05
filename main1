@@ -1,0 +1,52 @@
+import sys,time,random
+def type_effect(text): #create typing effect
+        for char in text:
+            sys.stdout.write(char)
+            sys.stdout.flush()
+            time.sleep(0.1)
+        print()
+def statgame():
+    print("playing stat")
+def econgame():
+    print("playing econ")
+def mathgame():
+    print("playing math")
+def chemgame():
+    print("playing chem")
+def histgame():
+    print("playing hist")
+def englgame():
+    print("playing engl")
+def main():
+    #print HKU Logo                              
+    print("$$\   $$\ $$\   $$\ $$\   $$\ \n$$ |  $$ |$$ | $$  |$$ |  $$ |\n$$ |  $$ |$$ |$$  / $$ |  $$ |")
+    print("$$$$$$$$ |$$$$$  /  $$ |  $$ |\n$$  __$$ |$$  $$<   $$ |  $$ |\n$$ |  $$ |$$ |\$$\  $$ |  $$ |")
+    print("$$ |  $$ |$$ | \$$\ \$$$$$$  |\n \__|  \__|\__|  \__| \______/ ")
+    type_effect("Welcome to the University of Hong Kong\nYou two are HKU freshmen.To win this game, you should get a higher gpa by defeating each other in different courses")
+    type_effect("Plaese enter your names") 
+    players={} #store players
+    players[1]=[input("Player1: ")]
+    players[2]=[input("Player2: ")]
+    grades_storage=[] #after finishing one course(one function),return a tuple ("ECON1210","A","B+"),player1 get A,player2 get B+
+    print(players)
+    type_effect("Now you can register 4 out of 6 courses")
+    print("1. STAT2601\n2. MATH1853\n3. ENGL1024\n4. ECON1210\n5. HIST1016\n6. CHEM1041\nEnter numbers 1-6 to register (input example: 1 2 4 6)")
+    while True : #check valid input 
+        courselist=input().split()
+        valid=True
+        for course in courselist :
+            if course not in ["1","2","3","4","5","6"] or len(set(courselist))!=4 : valid=False
+        if valid: break
+        else : print("invalid input, please enter again")
+    type_effect("Oh no! Some selected courese are disapproved by HKU Portal º·(˃̣̣̥∩˂̣̣̥)‧º aka automatic logout system\nHere are courses you are able to register at last...")
+    #courese dictionary stores course name as first item in list and function for the game as  second item
+    courses={1:["STAT2601","statgame()"],2:["MATH1853","mathgame()"],3:["ENGL1024","englgame()"],4:["ECON1210","econgame()"],5:["HIST1016","histgame()"],6:["CHEM1041","chemgame()"]}
+    gametobeplayed=[]
+    for c in random.sample([1,2,3,4,5,6],4) : #generate courses randomly
+        gametobeplayed.append(c)
+        print(courses[c][0],end=" ")
+    print()
+    type_effect("Let's start from the first course!")
+    for game in gametobeplayed : grades_storage.append(eval(courses[game][1])) #call the functions in courses dictionary and store grades in a list
+     
+main()
